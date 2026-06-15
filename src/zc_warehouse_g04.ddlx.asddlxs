@@ -1,0 +1,125 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'WarehouseUUID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'WarehouseUUID'
+annotate view ZC_WAREHOUSE_G04 with
+{
+  @EndUserText.label: 'WarehouseUUID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'WarehouseUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'WarehouseUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  WarehouseUUID;
+  
+  @EndUserText.label: 'WarehouseID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'WarehouseID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'WarehouseID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  WarehouseID;
+  
+  @EndUserText.label: 'Location'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Location'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Location'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Location;
+  
+  @EndUserText.label: 'Capacity'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Capacity'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Capacity'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Capacity;
+  
+  @UI.identification: [ {
+    position: 50 
+  } ]
+  @UI.lineItem: [ {
+    position: 50 
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  LocalCreatedBy;
+  
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  @UI.lineItem: [ {
+    position: 60 
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  LocalCreatedAt;
+  
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  @UI.lineItem: [ {
+    position: 70 
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  LastChangedAt;
+}

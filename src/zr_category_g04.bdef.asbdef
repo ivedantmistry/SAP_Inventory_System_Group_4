@@ -1,0 +1,47 @@
+managed implementation in class ZBP_R_CATEGORY_G04 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_CATEGORY_G04 alias ZrCategoryG04
+persistent table ZCATEGORY_G04
+extensible
+draft table ZCATEGORY_G04_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   CategoryUUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   CategoryUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZCATEGORY_G04 corresponding extensible
+  {
+    CategoryUUID = CATEGORY_UUID;
+    CategoryID = CATEGORY_ID;
+    Name = NAME;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

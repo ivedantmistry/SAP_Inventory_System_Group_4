@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZCATEGORY_G04",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZCATEGORY_G04",
+  "sapObjectType": "ZCATEGORY_G04",
+  "rootNode": true
+}

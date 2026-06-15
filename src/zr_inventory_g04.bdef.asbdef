@@ -1,0 +1,50 @@
+managed implementation in class ZBP_R_INVENTORY_G04 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_INVENTORY_G04 alias ZrInventoryG04
+persistent table ZINVENTORY_G04
+extensible
+draft table ZINVENTORY_G04_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   InventoryUUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   InventoryUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZINVENTORY_G04 corresponding extensible
+  {
+    InventoryUUID = INVENTORY_UUID;
+    ProductUUID = PRODUCT_UUID;
+    WarehouseUUID = WAREHOUSE_UUID;
+    Quantity = QUANTITY;
+    UnitOfMeasure = UNIT_OF_MEASURE;
+    LastRestockDate = LAST_RESTOCK_DATE;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

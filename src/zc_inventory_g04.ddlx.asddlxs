@@ -1,0 +1,153 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'InventoryUUID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'InventoryUUID'
+annotate view ZC_INVENTORY_G04 with
+{
+  @EndUserText.label: 'InventoryUUID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'InventoryUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'InventoryUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  InventoryUUID;
+  
+  @EndUserText.label: 'ProductUUID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ProductUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'ProductUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  ProductUUID;
+  
+  @EndUserText.label: 'WarehouseUUID'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'WarehouseUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'WarehouseUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  WarehouseUUID;
+  
+  @EndUserText.label: 'Quantity'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Quantity'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Quantity'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Quantity;
+  
+  @EndUserText.label: 'UnitOfMeasure'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'UnitOfMeasure'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'UnitOfMeasure'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  UnitOfMeasure;
+  
+  @EndUserText.label: 'LastRestockDate'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'LastRestockDate'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'LastRestockDate'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  LastRestockDate;
+  
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  @UI.lineItem: [ {
+    position: 70 
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  LocalCreatedBy;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  LocalCreatedAt;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  @UI.lineItem: [ {
+    position: 100 
+  } ]
+  @UI.selectionField: [ {
+    position: 100 
+  } ]
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  @UI.lineItem: [ {
+    position: 110 
+  } ]
+  @UI.selectionField: [ {
+    position: 110 
+  } ]
+  LastChangedAt;
+}

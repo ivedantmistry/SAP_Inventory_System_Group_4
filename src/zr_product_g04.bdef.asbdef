@@ -1,0 +1,51 @@
+managed implementation in class ZBP_R_PRODUCT_G04 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_PRODUCT_G04 alias ZrProductG04
+persistent table ZPRODUCT_G04
+extensible
+draft table ZPRODUCT_G04_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   ProductUUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   ProductUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZPRODUCT_G04 corresponding extensible
+  {
+    ProductUUID = PRODUCT_UUID;
+    ProductID = PRODUCT_ID;
+    Name = NAME;
+    CategoryUUID = CATEGORY_UUID;
+    SupplierUUID = SUPPLIER_UUID;
+    Price = PRICE;
+    Currency = CURRENCY;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}
