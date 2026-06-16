@@ -1,49 +1,47 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
-@Endusertext: {
-  Label: '###GENERATED Core Data Service Entity'
+@EndUserText: {
+  label: '###GENERATED Core Data Service Entity'
 }
-@Objectmodel: {
-  Sapobjectnodetype.Name: 'ZINVENTORY_G04'
+@ObjectModel: {
+  sapObjectNodeType.name: 'ZINVENTORY_G04'
 }
 @AccessControl.authorizationCheck: #MANDATORY
 define root view entity ZC_INVENTORY_G04
-  provider contract TRANSACTIONAL_QUERY
+  provider contract transactional_query
   as projection on ZR_INVENTORY_G04
-  association [1..1] to ZR_INVENTORY_G04 as _BaseEntity on $projection.INVENTORYUUID = _BaseEntity.INVENTORYUUID
+  association [1..1] to ZR_INVENTORY_G04 as _BaseEntity on $projection.InventoryUuid = _BaseEntity.InventoryUuid
 {
-  key InventoryUUID,
-  ProductUUID,
-  WarehouseUUID,
-  Quantity,
-  @Consumption: {
-    Valuehelpdefinition: [ {
-      Entity.Element: 'UnitOfMeasure', 
-      Entity.Name: 'I_UnitOfMeasureStdVH', 
-      Useforvalidation: true
-    } ]
-  }
-  UnitOfMeasure,
-  LastRestockDate,
-  @Semantics: {
-    User.Createdby: true
-  }
-  LocalCreatedBy,
-  @Semantics: {
-    Systemdatetime.Createdat: true
-  }
-  LocalCreatedAt,
-  @Semantics: {
-    User.Localinstancelastchangedby: true
-  }
-  LocalLastChangedBy,
-  @Semantics: {
-    Systemdatetime.Localinstancelastchangedat: true
-  }
-  LocalLastChangedAt,
-  @Semantics: {
-    Systemdatetime.Lastchangedat: true
-  }
-  LastChangedAt,
-  _BaseEntity
+  key InventoryUuid,
+  
+      /* Enable Value Help mapping to ZC_PRODUCT_G04 and replace UUID with Name */
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZC_PRODUCT_G04', element: 'ProductUuid' } }]
+      @ObjectModel.text.element: ['ProductName']
+      ProductUuid,
+      
+      /* Hidden text field for Product */
+      @UI.hidden: true
+      _Product.Name as ProductName,
+
+      /* Enable Value Help mapping to ZC_WAREHOUSE_G04 and replace UUID with Location */
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZC_WAREHOUSE_G04', element: 'WarehouseUuid' } }]
+      @ObjectModel.text.element: ['WarehouseLocation']
+      WarehouseUuid,
+      
+      /* Hidden text field for Warehouse */
+      @UI.hidden: true
+      _Warehouse.Location as WarehouseLocation,
+
+      Quantity,
+      UnitOfMeasure,
+      LastRestockDate,
+      LocalCreatedBy,
+      LocalCreatedAt,
+      LocalLastChangedBy,
+      LocalLastChangedAt,
+      LastChangedAt,
+      
+      /* Expose associations */
+      _Product,
+      _Warehouse
 }

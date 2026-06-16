@@ -5,8 +5,6 @@ CLASS zcl_generate_data_g04 DEFINITION
 
   PUBLIC SECTION.
     INTERFACES if_oo_adt_classrun .
-  PROTECTED SECTION.
-  PRIVATE SECTION.
 ENDCLASS.
 
 CLASS zcl_generate_data_g04 IMPLEMENTATION.
@@ -24,11 +22,9 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
     DELETE FROM zproduct_g04.
     DELETE FROM zinventory_g04.
 
-    " Get system time and user for Admin fields
     GET TIME STAMP FIELD DATA(lv_ts).
     DATA(lv_user) = cl_abap_context_info=>get_user_technical_name( ).
 
-    " Bọc Try...Catch để hệ thống hết báo vàng
     TRY.
         " 1. Insert Category
         it_category = VALUE #(
@@ -41,6 +37,12 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
           ( category_uuid    = cl_system_uuid=>create_uuid_x16_static( )
             category_id      = 'CAT02'
             name             = 'Football Boots'
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+
+          ( category_uuid    = cl_system_uuid=>create_uuid_x16_static( )
+            category_id      = 'CAT03'
+            name             = 'Goalkeeper Gear'
             local_created_by = lv_user
             local_created_at = lv_ts )
         ).
@@ -61,6 +63,13 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
             contact_email    = 'supply@nike.eu'
             local_created_by = lv_user
             local_created_at = lv_ts )
+
+          ( supplier_uuid    = cl_system_uuid=>create_uuid_x16_static( )
+            supplier_id      = 'SUP03'
+            name             = 'Puma Global'
+            contact_email    = 'info@puma.com'
+            local_created_by = lv_user
+            local_created_at = lv_ts )
         ).
         INSERT zsupplier_g04 FROM TABLE @it_supplier.
 
@@ -79,10 +88,17 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
             capacity         = 3000
             local_created_by = lv_user
             local_created_at = lv_ts )
+
+          ( warehouse_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            warehouse_id     = 'WH-HAM'
+            location         = 'Hamburg Port'
+            capacity         = 8000
+            local_created_by = lv_user
+            local_created_at = lv_ts )
         ).
         INSERT zwarehouse_g04 FROM TABLE @it_warehouse.
 
-        " 4. Insert Product (Supplier now linked here)
+        " 4. Insert Product
         it_product = VALUE #(
           ( product_uuid     = cl_system_uuid=>create_uuid_x16_static( )
             product_id       = 'PRD001'
@@ -100,6 +116,26 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
             category_uuid    = it_category[ 2 ]-category_uuid
             supplier_uuid    = it_supplier[ 2 ]-supplier_uuid
             price            = '250.00'
+            currency         = 'EUR'
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+
+          ( product_uuid     = cl_system_uuid=>create_uuid_x16_static( )
+            product_id       = 'PRD003'
+            name             = 'Puma Future Pro'
+            category_uuid    = it_category[ 3 ]-category_uuid
+            supplier_uuid    = it_supplier[ 3 ]-supplier_uuid
+            price            = '130.00'
+            currency         = 'EUR'
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+
+          ( product_uuid     = cl_system_uuid=>create_uuid_x16_static( )
+            product_id       = 'PRD004'
+            name             = 'Predator Gloves'
+            category_uuid    = it_category[ 3 ]-category_uuid
+            supplier_uuid    = it_supplier[ 1 ]-supplier_uuid
+            price            = '85.00'
             currency         = 'EUR'
             local_created_by = lv_user
             local_created_at = lv_ts )
@@ -125,10 +161,28 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
             last_restock_date = cl_abap_context_info=>get_system_date( )
             local_created_by = lv_user
             local_created_at = lv_ts )
+
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 3 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 200
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 4 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 30
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
         ).
         INSERT zinventory_g04 FROM TABLE @it_inventory.
 
-        out->write( 'Database tables _G04 populated successfully!' ).
+        out->write( 'Database populated successfully with extensive test data.' ).
 
       CATCH cx_uuid_error.
         out->write( 'Error: Could not generate UUID' ).

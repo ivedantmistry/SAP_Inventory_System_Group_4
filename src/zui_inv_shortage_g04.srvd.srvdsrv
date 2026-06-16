@@ -1,0 +1,4 @@
+@EndUserText.label: 'Read-only report'
+define service ZUI_INV_SHORTAGE_G04 {
+  expose ZC_INV_SHORTAGE_G04 as ShortageItems;
+}
