@@ -1,9 +1,9 @@
-@AccessControl.authorizationCheck: #MANDATORY
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 @Metadata.allowExtensions: true
 @ObjectModel.sapObjectNodeType.name: 'ZPRODUCT_G04'
 @EndUserText.label: '###GENERATED Core Data Service Entity'
 define root view entity ZR_PRODUCT_G04
-  as select from ZPRODUCT_G04
+  as select from zproduct_g04
 {
   key product_uuid as ProductUUID,
   product_id as ProductID,

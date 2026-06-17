@@ -12,11 +12,17 @@ authorization master( global )
 {
   field ( readonly )
    InventoryUUID,
+   LastRestockDate,
    LocalCreatedBy,
    LocalCreatedAt,
    LocalLastChangedBy,
    LocalLastChangedAt,
    LastChangedAt;
+
+   /* Ensure users must select a Product and a Warehouse */
+  field ( mandatory )
+   ProductUUID,
+   WarehouseUUID;
 
   field ( numbering : managed )
    InventoryUUID;
@@ -30,9 +36,21 @@ authorization master( global )
   draft action Discard;
   draft action Edit;
   draft action Resume;
-  draft determine action Prepare;
+  draft determine action Prepare
+  {
+    validation validateQuantity;
+    validation validateRestockDate;
+  }
+
+  /* Validations */
+  validation validateQuantity on save { field Quantity; create; update; }
+  validation validateRestockDate on save { field LastRestockDate; create; update; }
+
+  /* Determinations */
+  determination setInitialDate on modify { create; }
 
   mapping for ZINVENTORY_G04 corresponding extensible
+
   {
     InventoryUUID = INVENTORY_UUID;
     ProductUUID = PRODUCT_UUID;

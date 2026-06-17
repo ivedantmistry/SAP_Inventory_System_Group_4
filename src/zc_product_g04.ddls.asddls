@@ -1,52 +1,55 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
-@Endusertext: {
-  Label: '###GENERATED Core Data Service Entity'
+@ObjectModel.resultSet.sizeCategory: #XS
+@EndUserText: {
+  label: '###GENERATED Core Data Service Entity'
 }
-@Objectmodel: {
-  Sapobjectnodetype.Name: 'ZPRODUCT_G04'
+@ObjectModel: {
+  sapObjectNodeType.name: 'ZPRODUCT_G04'
 }
-@AccessControl.authorizationCheck: #MANDATORY
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 define root view entity ZC_PRODUCT_G04
-  provider contract TRANSACTIONAL_QUERY
+  provider contract transactional_query
   as projection on ZR_PRODUCT_G04
-  association [1..1] to ZR_PRODUCT_G04 as _BaseEntity on $projection.PRODUCTUUID = _BaseEntity.PRODUCTUUID
+  association [1..1] to ZR_PRODUCT_G04 as _BaseEntity on $projection.ProductUUID = _BaseEntity.ProductUUID
 {
+  @ObjectModel.text.element: ['Name']  
   key ProductUUID,
   ProductID,
+  @Semantics.text: true
   Name,
   CategoryUUID,
   SupplierUUID,
   @Semantics: {
-    Amount.Currencycode: 'Currency'
+    amount.currencyCode: 'Currency'
   }
   Price,
   @Consumption: {
-    Valuehelpdefinition: [ {
-      Entity.Element: 'Currency', 
-      Entity.Name: 'I_CurrencyStdVH', 
-      Useforvalidation: true
+    valueHelpDefinition: [ {
+      entity.element: 'Currency', 
+      entity.name: 'I_CurrencyStdVH', 
+      useForValidation: true
     } ]
   }
   Currency,
   @Semantics: {
-    User.Createdby: true
+    user.createdBy: true
   }
   LocalCreatedBy,
   @Semantics: {
-    Systemdatetime.Createdat: true
+    systemDateTime.createdAt: true
   }
   LocalCreatedAt,
   @Semantics: {
-    User.Localinstancelastchangedby: true
+    user.localInstanceLastChangedBy: true
   }
   LocalLastChangedBy,
   @Semantics: {
-    Systemdatetime.Localinstancelastchangedat: true
+    systemDateTime.localInstanceLastChangedAt: true
   }
   LocalLastChangedAt,
   @Semantics: {
-    Systemdatetime.Lastchangedat: true
+    systemDateTime.lastChangedAt: true
   }
   LastChangedAt,
   _BaseEntity

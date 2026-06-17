@@ -1,11 +1,13 @@
 @Metadata.layer: #CORE
-@UI.headerInfo.title.type: #STANDARD
-@UI.headerInfo.title.value: 'InventoryUUID'
-@UI.headerInfo.description.type: #STANDARD
-@UI.headerInfo.description.value: 'InventoryUUID'
+@UI: {
+  headerInfo: { 
+    typeName: 'Inventory Item',
+    typeNamePlural: 'Inventory Items',
+    title: { type: #STANDARD, value: 'ProductUUID' } 
+  } 
+}
 annotate view ZC_INVENTORY_G04 with
 {
-  @EndUserText.label: 'InventoryUUID'
   @UI.facet: [ {
     label: 'General Information', 
     id: 'GeneralInfo', 
@@ -13,141 +15,52 @@ annotate view ZC_INVENTORY_G04 with
     position: 10 , 
     type: #IDENTIFICATION_REFERENCE
   } ]
-  @UI.identification: [ {
-    position: 10 , 
-    label: 'InventoryUUID'
-  } ]
-  @UI.lineItem: [ {
-    position: 10 , 
-    label: 'InventoryUUID'
-  } ]
-  @UI.selectionField: [ {
-    position: 10 
-  } ]
-  InventoryUUID;
+
+  @UI.hidden: true
+  InventoryUuid;
   
-  @EndUserText.label: 'ProductUUID'
-  @UI.identification: [ {
-    position: 20 , 
-    label: 'ProductUUID'
-  } ]
-  @UI.lineItem: [ {
-    position: 20 , 
-    label: 'ProductUUID'
-  } ]
-  @UI.selectionField: [ {
-    position: 20 
-  } ]
-  ProductUUID;
+  @EndUserText.label: 'Product'
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10, label: 'Product' }]
+  @UI.identification: [{ position: 10, label: 'Product' }]
+  ProductUuid;
   
-  @EndUserText.label: 'WarehouseUUID'
-  @UI.identification: [ {
-    position: 30 , 
-    label: 'WarehouseUUID'
-  } ]
-  @UI.lineItem: [ {
-    position: 30 , 
-    label: 'WarehouseUUID'
-  } ]
-  @UI.selectionField: [ {
-    position: 30 
-  } ]
-  WarehouseUUID;
+  @EndUserText.label: 'Warehouse'
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20, label: 'Warehouse' }]
+  @UI.identification: [{ position: 20, label: 'Warehouse' }]
+  WarehouseUuid;
   
   @EndUserText.label: 'Quantity'
-  @UI.identification: [ {
-    position: 40 , 
-    label: 'Quantity'
-  } ]
-  @UI.lineItem: [ {
-    position: 40 , 
-    label: 'Quantity'
-  } ]
-  @UI.selectionField: [ {
-    position: 40 
-  } ]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30, label: 'Quantity' }]
+  @UI.identification: [{ position: 30, label: 'Quantity' }]
   Quantity;
   
-  @EndUserText.label: 'UnitOfMeasure'
-  @UI.identification: [ {
-    position: 50 , 
-    label: 'UnitOfMeasure'
-  } ]
-  @UI.lineItem: [ {
-    position: 50 , 
-    label: 'UnitOfMeasure'
-  } ]
-  @UI.selectionField: [ {
-    position: 50 
-  } ]
+  @EndUserText.label: 'Unit'
+  @UI.selectionField: [{ position: 35 }]
+  @UI.lineItem: [{ position: 35, label: 'Unit' }]
+  @UI.identification: [{ position: 35, label: 'Unit' }]
   UnitOfMeasure;
   
-  @EndUserText.label: 'LastRestockDate'
-  @UI.identification: [ {
-    position: 60 , 
-    label: 'LastRestockDate'
-  } ]
-  @UI.lineItem: [ {
-    position: 60 , 
-    label: 'LastRestockDate'
-  } ]
-  @UI.selectionField: [ {
-    position: 60 
-  } ]
+  @EndUserText.label: 'Restock Date'
+  @UI.selectionField: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40, label: 'Restock Date' }]
+  @UI.identification: [{ position: 40, label: 'Restock Date' }]
   LastRestockDate;
   
-  @UI.identification: [ {
-    position: 70 
-  } ]
-  @UI.lineItem: [ {
-    position: 70 
-  } ]
-  @UI.selectionField: [ {
-    position: 70 
-  } ]
+  @UI.hidden: true
   LocalCreatedBy;
   
-  @UI.identification: [ {
-    position: 80 
-  } ]
-  @UI.lineItem: [ {
-    position: 80 
-  } ]
-  @UI.selectionField: [ {
-    position: 80 
-  } ]
+  @UI.hidden: true
   LocalCreatedAt;
   
-  @UI.identification: [ {
-    position: 90 
-  } ]
-  @UI.lineItem: [ {
-    position: 90 
-  } ]
-  @UI.selectionField: [ {
-    position: 90 
-  } ]
+  @UI.hidden: true
   LocalLastChangedBy;
   
-  @UI.identification: [ {
-    position: 100 
-  } ]
-  @UI.lineItem: [ {
-    position: 100 
-  } ]
-  @UI.selectionField: [ {
-    position: 100 
-  } ]
+  @UI.hidden: true
   LocalLastChangedAt;
   
-  @UI.identification: [ {
-    position: 110 
-  } ]
-  @UI.lineItem: [ {
-    position: 110 
-  } ]
-  @UI.selectionField: [ {
-    position: 110 
-  } ]
+  @UI.hidden: true
   LastChangedAt;
 }

@@ -1,39 +1,40 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
-@Endusertext: {
-  Label: '###GENERATED Core Data Service Entity'
+@EndUserText: {
+  label: '###GENERATED Core Data Service Entity'
 }
-@Objectmodel: {
-  Sapobjectnodetype.Name: 'ZWAREHOUSE_G04'
+@ObjectModel: {
+  sapObjectNodeType.name: 'ZWAREHOUSE_G04'
 }
 @AccessControl.authorizationCheck: #MANDATORY
+@ObjectModel.resultSet.sizeCategory: #XS
 define root view entity ZC_WAREHOUSE_G04
-  provider contract TRANSACTIONAL_QUERY
+  provider contract transactional_query
   as projection on ZR_WAREHOUSE_G04
-  association [1..1] to ZR_WAREHOUSE_G04 as _BaseEntity on $projection.WAREHOUSEUUID = _BaseEntity.WAREHOUSEUUID
+  association [1..1] to ZR_WAREHOUSE_G04 as _BaseEntity on $projection.WarehouseUUID = _BaseEntity.WarehouseUUID
 {
   key WarehouseUUID,
   WarehouseID,
   Location,
   Capacity,
   @Semantics: {
-    User.Createdby: true
+    user.createdBy: true
   }
   LocalCreatedBy,
   @Semantics: {
-    Systemdatetime.Createdat: true
+    systemDateTime.createdAt: true
   }
   LocalCreatedAt,
   @Semantics: {
-    User.Localinstancelastchangedby: true
+    user.localInstanceLastChangedBy: true
   }
   LocalLastChangedBy,
   @Semantics: {
-    Systemdatetime.Localinstancelastchangedat: true
+    systemDateTime.localInstanceLastChangedAt: true
   }
   LocalLastChangedAt,
   @Semantics: {
-    Systemdatetime.Lastchangedat: true
+    systemDateTime.lastChangedAt: true
   }
   LastChangedAt,
   _BaseEntity
