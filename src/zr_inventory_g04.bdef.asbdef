@@ -46,8 +46,7 @@ authorization master( global )
   validation validateQuantity on save { field Quantity; create; update; }
   validation validateRestockDate on save { field LastRestockDate; create; update; }
 
-  /* Determinations */
-  determination setInitialDate on modify { create; }
+determination setInitialDate on modify { create; field Quantity; }
 
   mapping for ZINVENTORY_G04 corresponding extensible
 
