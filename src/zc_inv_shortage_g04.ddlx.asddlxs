@@ -1,0 +1,45 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Shortage Item',
+                typeNamePlural: 'Shortage Items',
+                title: { type: #STANDARD, label: 'Shortage Report', value: 'ProductName' } } }
+annotate view ZC_INV_SHORTAGE_G04 with
+{
+  @UI.facet: [ { id: 'ItemDetails',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'Item Details',
+                 position: 10 } ]
+
+  @UI.hidden: true
+  InventoryUuid;
+
+  @UI.lineItem: [ { position: 10, label: 'Product' } ]
+  @UI.identification: [ { position: 10, label: 'Product' } ]
+  @Search.defaultSearchElement: true
+  @UI.textArrangement: #TEXT_ONLY
+  ProductUuid;
+
+  @UI.hidden: true
+  ProductName;
+
+  @UI.lineItem: [ { position: 20, label: 'Warehouse Location' } ]
+  @UI.identification: [ { position: 20, label: 'Warehouse Location' } ]
+  @Search.defaultSearchElement: true
+  @UI.textArrangement: #TEXT_ONLY
+  WarehouseUuid;
+
+  @UI.hidden: true
+  WarehouseLocation;
+
+  @UI.lineItem: [ { position: 30, label: 'Current Quantity' } ]
+  @UI.identification: [ { position: 30, label: 'Current Quantity' } ]
+  Quantity;
+
+  @UI.hidden: true
+  UnitOfMeasure;
+
+  @UI.lineItem: [ { position: 40, label: 'Last Restock Date' } ]
+  @UI.identification: [ { position: 40, label: 'Last Restock Date' } ]
+  LastRestockDate;
+}

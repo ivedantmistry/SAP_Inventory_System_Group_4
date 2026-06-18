@@ -142,7 +142,7 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
         ).
         INSERT zproduct_g04 FROM TABLE @it_product.
 
-        " 5. Insert Inventory
+        " 5. Insert Inventory - extended with 20+ entries, 10+ with quantity <50
         it_inventory = VALUE #(
           ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
             product_uuid     = it_product[ 1 ]-product_uuid
@@ -152,16 +152,14 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
             last_restock_date = cl_abap_context_info=>get_system_date( )
             local_created_by = lv_user
             local_created_at = lv_ts )
-
           ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
             product_uuid     = it_product[ 2 ]-product_uuid
             warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
-            quantity         = 45
+            quantity         = 45 " 1 <50
             unit_of_measure  = 'PC'
             last_restock_date = cl_abap_context_info=>get_system_date( )
             local_created_by = lv_user
             local_created_at = lv_ts )
-
           ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
             product_uuid     = it_product[ 3 ]-product_uuid
             warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
@@ -170,11 +168,157 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
             last_restock_date = cl_abap_context_info=>get_system_date( )
             local_created_by = lv_user
             local_created_at = lv_ts )
-
           ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
             product_uuid     = it_product[ 4 ]-product_uuid
             warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
-            quantity         = 30
+            quantity         = 30 " 2 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 1 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
+            quantity         = 12 " 3 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 2 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 7  " 4 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 3 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 25 " 5 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 4 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
+            quantity         = 5  " 6 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 1 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 300
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 2 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 44 " 7 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 3 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
+            quantity         = 40 " 8 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 4 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 10 " 9 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+
+          " Add more with both high and <50 quantity
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 1 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 49 " 10 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 2 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
+            quantity         = 400
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 3 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 38 " 11 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 4 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 13 " 12 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 1 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
+            quantity         = 800
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 2 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 20 " 13 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 3 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 100
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 4 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 2 ]-warehouse_uuid
+            quantity         = 2  " 14 <50
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 1 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 3 ]-warehouse_uuid
+            quantity         = 71
+            unit_of_measure  = 'PC'
+            last_restock_date = cl_abap_context_info=>get_system_date( )
+            local_created_by = lv_user
+            local_created_at = lv_ts )
+          ( inventory_uuid   = cl_system_uuid=>create_uuid_x16_static( )
+            product_uuid     = it_product[ 2 ]-product_uuid
+            warehouse_uuid   = it_warehouse[ 1 ]-warehouse_uuid
+            quantity         = 21 " 15 <50
             unit_of_measure  = 'PC'
             last_restock_date = cl_abap_context_info=>get_system_date( )
             local_created_by = lv_user

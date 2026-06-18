@@ -6,7 +6,7 @@
     <DDLNAME>ZC_INV_SHORTAGE_G04</DDLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DDTEXT>Read-only report</DDTEXT>
-    <SOURCE_TYPE>W</SOURCE_TYPE>
+    <SOURCE_TYPE>P</SOURCE_TYPE>
    </DDLS>
   </asx:values>
  </asx:abap>
