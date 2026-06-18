@@ -3,46 +3,55 @@ strict ( 2 );
 with draft;
 extensible;
 define behavior for ZR_WAREHOUSE_G04 alias ZrWarehouseG04
-persistent table ZWAREHOUSE_G04
+persistent table zwarehouse_g04
 extensible
-draft table ZWAREHOUSE_G04_D
+draft table zwarehouse_g04_d
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
-authorization master( global )
+authorization master ( global )
 {
   field ( readonly )
-   WarehouseUUID,
-   LocalCreatedBy,
-   LocalCreatedAt,
-   LocalLastChangedBy,
-   LocalLastChangedAt,
-   LastChangedAt;
+  WarehouseUUID,
+  WarehouseID,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
 
   field ( numbering : managed )
-   WarehouseUUID;
-
+  WarehouseUUID;
 
   create;
   update;
   delete;
 
+
+  determination calculateWarehouseID on modify { create; }
+
+
+  validation validateCapacity on save { create; update;}
+
   draft action Activate optimized;
   draft action Discard;
   draft action Edit;
   draft action Resume;
-  draft determine action Prepare;
 
-  mapping for ZWAREHOUSE_G04 corresponding extensible
+  draft determine action Prepare
   {
-    WarehouseUUID = WAREHOUSE_UUID;
-    WarehouseID = WAREHOUSE_ID;
-    Location = LOCATION;
-    Capacity = CAPACITY;
-    LocalCreatedBy = LOCAL_CREATED_BY;
-    LocalCreatedAt = LOCAL_CREATED_AT;
-    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
-    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
-    LastChangedAt = LAST_CHANGED_AT;
+    validation validateCapacity;
   }
 
+  mapping for zwarehouse_g04 corresponding extensible
+    {
+      WarehouseUUID      = WAREHOUSE_UUID;
+      WarehouseID        = WAREHOUSE_ID;
+      Location           = LOCATION;
+      Capacity           = CAPACITY;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
 }

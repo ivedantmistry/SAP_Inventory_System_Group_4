@@ -6,7 +6,7 @@
 @ObjectModel: {
   sapObjectNodeType.name: 'ZINVENTORY_G04'
 }
-@AccessControl.authorizationCheck: #NOT_REQUIRED
+@AccessControl.authorizationCheck: #MANDATORY
 define root view entity ZC_INVENTORY_G04
   provider contract transactional_query
   as projection on ZR_INVENTORY_G04

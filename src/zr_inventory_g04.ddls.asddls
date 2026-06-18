@@ -1,4 +1,4 @@
-@AccessControl.authorizationCheck: #NOT_REQUIRED
+@AccessControl.authorizationCheck: #MANDATORY
 @Metadata.allowExtensions: true
 @ObjectModel.sapObjectNodeType.name: 'ZINVENTORY_G04'
 @EndUserText.label: '###GENERATED Core Data Service Entity'
