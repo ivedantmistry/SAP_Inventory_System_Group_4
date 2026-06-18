@@ -1,0 +1,6 @@
+@EndUserText.label: 'Access Control for Inventory'
+@MappingRole: true
+define role ZC_INVENTORY_G04 {
+  grant select on ZC_INVENTORY_G04
+  where inheriting conditions from entity ZR_INVENTORY_G04;
+}

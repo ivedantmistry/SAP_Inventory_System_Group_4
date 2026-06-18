@@ -1,3 +1,4 @@
+@Search.searchable: true
 @Metadata.layer: #CORE
 @UI: {
   headerInfo: { typeName: 'Shortage Item',

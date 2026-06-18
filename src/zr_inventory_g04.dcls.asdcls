@@ -1,0 +1,6 @@
+@EndUserText.label: 'Access Control for Inventory'
+@MappingRole: true
+define role ZR_INVENTORY_G04 {
+  grant select on ZR_INVENTORY_G04
+  where TRUE; 
+}

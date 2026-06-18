@@ -12,7 +12,6 @@ authorization master ( global )
 {
   field ( readonly )
   WarehouseUUID,
-  WarehouseID,
   LocalCreatedBy,
   LocalCreatedAt,
   LocalLastChangedBy,
@@ -26,11 +25,7 @@ authorization master ( global )
   update;
   delete;
 
-
-  determination calculateWarehouseID on modify { create; }
-
-
-  validation validateCapacity on save { create; update;}
+  validation validateCapacity on save { create; update; }
 
   draft action Activate optimized;
   draft action Discard;
