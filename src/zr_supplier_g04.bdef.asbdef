@@ -3,46 +3,54 @@ strict ( 2 );
 with draft;
 extensible;
 define behavior for ZR_SUPPLIER_G04 alias ZrSupplierG04
-persistent table ZSUPPLIER_G04
+persistent table zsupplier_g04
 extensible
-draft table ZSUPPLIER_G04_D
+draft table zsupplier_g04_d
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
-authorization master( global )
+authorization master ( global )
 {
   field ( readonly )
-   SupplierUUID,
-   LocalCreatedBy,
-   LocalCreatedAt,
-   LocalLastChangedBy,
-   LocalLastChangedAt,
-   LastChangedAt;
+  SupplierUUID,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
 
   field ( numbering : managed )
-   SupplierUUID;
+  SupplierUUID;
 
+  field ( mandatory )
+  Name,
+  ContactEmail;
 
   create;
   update;
   delete;
 
+  validation validateSupplier on save { create; update; field Name, ContactEmail; }
+
   draft action Activate optimized;
   draft action Discard;
   draft action Edit;
   draft action Resume;
-  draft determine action Prepare;
-
-  mapping for ZSUPPLIER_G04 corresponding extensible
+  draft determine action Prepare
   {
-    SupplierUUID = SUPPLIER_UUID;
-    SupplierID = SUPPLIER_ID;
-    Name = NAME;
-    ContactEmail = CONTACT_EMAIL;
-    LocalCreatedBy = LOCAL_CREATED_BY;
-    LocalCreatedAt = LOCAL_CREATED_AT;
-    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
-    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
-    LastChangedAt = LAST_CHANGED_AT;
+    validation validateSupplier;
   }
+
+  mapping for zsupplier_g04 corresponding extensible
+    {
+      SupplierUUID       = SUPPLIER_UUID;
+      SupplierID         = SUPPLIER_ID;
+      Name               = NAME;
+      ContactEmail       = CONTACT_EMAIL;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
 
 }

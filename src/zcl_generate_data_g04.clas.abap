@@ -326,6 +326,12 @@ CLASS zcl_generate_data_g04 IMPLEMENTATION.
         ).
         INSERT zinventory_g04 FROM TABLE @it_inventory.
 
+        UPDATE zcategory_g04 SET local_last_changed_at = @lv_ts, last_changed_at = @lv_ts, local_last_changed_by = @lv_user.
+        UPDATE zsupplier_g04 SET local_last_changed_at = @lv_ts, last_changed_at = @lv_ts, local_last_changed_by = @lv_user.
+        UPDATE zwarehouse_g04 SET local_last_changed_at = @lv_ts, last_changed_at = @lv_ts, local_last_changed_by = @lv_user.
+        UPDATE zproduct_g04 SET local_last_changed_at = @lv_ts, last_changed_at = @lv_ts, local_last_changed_by = @lv_user.
+        UPDATE zinventory_g04 SET local_last_changed_at = @lv_ts, last_changed_at = @lv_ts, local_last_changed_by = @lv_user.
+
         out->write( 'Database populated successfully with extensive test data.' ).
 
       CATCH cx_uuid_error.

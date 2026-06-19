@@ -1,7 +1,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @Metadata.allowExtensions: true
 @ObjectModel.sapObjectNodeType.name: 'ZINVENTORY_G04'
-@EndUserText.label: '###GENERATED Core Data Service Entity'
+@EndUserText.label: 'Inventory Item Management'
 define root view entity ZR_INVENTORY_G04
   as select from zinventory_g04
   /* Define associations for Text and Value Help */

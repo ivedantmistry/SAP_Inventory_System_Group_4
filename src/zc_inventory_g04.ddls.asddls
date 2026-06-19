@@ -1,7 +1,7 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
 @EndUserText: {
-  label: '###GENERATED Core Data Service Entity'
+  label: 'Inventory Item Management'
 }
 @ObjectModel: {
   sapObjectNodeType.name: 'ZINVENTORY_G04'
